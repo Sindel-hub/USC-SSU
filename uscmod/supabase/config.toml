@@ -1,0 +1,5 @@
+[functions.usc-email]
+verify_jwt = false
+
+[functions.usc-email-worker]
+verify_jwt = false
