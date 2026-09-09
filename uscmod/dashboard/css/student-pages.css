@@ -6528,3 +6528,43 @@ body.student-app-shell .student-module-toolbar.tracklist-toolbar h1{
     margin-left: -10px !important;
   }
 }
+
+
+/* =========================================================
+   STUDENT ELECTION — CENTER CANDIDATE ROWS
+   2026-09-10
+   Centers incomplete candidate rows (1–4 cards) while keeping the
+   row itself left-anchored during hover expansion. This preserves
+   the stable-hover behavior and prevents the cards from jumping.
+   ========================================================= */
+@media (min-width: 1101px) {
+  .candidate-slant-grid-four[data-candidate-count="1"] { --candidate-row-offset: calc((100% - 170px) / 2); }
+  .candidate-slant-grid-four[data-candidate-count="2"] { --candidate-row-offset: calc((100% - 326px) / 2); }
+  .candidate-slant-grid-four[data-candidate-count="3"] { --candidate-row-offset: calc((100% - 482px) / 2); }
+  .candidate-slant-grid-four[data-candidate-count="4"] { --candidate-row-offset: calc((100% - 638px) / 2); }
+
+  .candidate-slant-grid-four[data-candidate-count] > .candidate-slant-card:first-child {
+    margin-left: max(0px, var(--candidate-row-offset, 0px)) !important;
+  }
+
+  /* Keep the same centered starting anchor when the first card expands. */
+  .candidate-slant-grid-four[data-candidate-count]:not(.is-accordion-active) > .candidate-slant-card:first-child:hover,
+  .candidate-slant-grid-four[data-candidate-count]:not(.is-accordion-active) > .candidate-slant-card:first-child:focus-visible,
+  .candidate-slant-grid-four[data-candidate-count].is-accordion-active > .candidate-slant-card:first-child.is-expanded,
+  .candidate-slant-grid-four[data-candidate-count].is-accordion-active > .candidate-slant-card:first-child.is-collapsed {
+    margin-left: max(0px, var(--candidate-row-offset, 0px)) !important;
+  }
+}
+
+@media (min-width: 821px) and (max-width: 1100px) {
+  .candidate-slant-grid-four[data-candidate-count="1"] { --candidate-row-offset: calc((100% - 150px) / 2); }
+  .candidate-slant-grid-four[data-candidate-count="2"] { --candidate-row-offset: calc((100% - 284px) / 2); }
+  .candidate-slant-grid-four[data-candidate-count="3"] { --candidate-row-offset: calc((100% - 418px) / 2); }
+  .candidate-slant-grid-four[data-candidate-count="4"] { --candidate-row-offset: calc((100% - 552px) / 2); }
+
+  .candidate-slant-grid-four[data-candidate-count] > .candidate-slant-card:first-child,
+  .candidate-slant-grid-four[data-candidate-count].is-accordion-active > .candidate-slant-card:first-child.is-collapsed,
+  .candidate-slant-grid-four[data-candidate-count].is-accordion-active > .candidate-slant-card:first-child.is-expanded {
+    margin-left: max(0px, var(--candidate-row-offset, 0px)) !important;
+  }
+}
