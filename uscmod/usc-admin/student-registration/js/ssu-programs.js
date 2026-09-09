@@ -36,23 +36,6 @@ export const SSU_PROGRAMS = Object.freeze({
     "Bachelor of Industrial Technology major in Beauty Care and Wellness Technology",
     "Bachelor of Industrial Technology major in Apparel and Fashion Technology",
     "Bachelor of Science in Architecture"
-  ],
-  "SSU Mercedes Campus": [
-    "Bachelor of Science in Fisheries",
-    "Bachelor of Science in Marine Biology",
-    "Bachelor of Technical Vocational Teacher Education major in Aquaculture",
-    "Bachelor of Technical Vocational Teacher Education major in Fish Processing",
-    "Bachelor of Technical Vocational Teacher Education major in Fish Capture"
-  ],
-  "SSU Paranas Campus": [
-    "Bachelor of Secondary Education major in Filipino",
-    "Bachelor of Secondary Education major in Mathematics",
-    "Bachelor of Elementary Education",
-    "Bachelor of Industrial Technology major in Automotive Technology",
-    "Bachelor of Industrial Technology major in Architectural Drafting Technology",
-    "Bachelor of Industrial Technology major in Apparel and Fashion Technology",
-    "Bachelor of Industrial Technology major in Electrical Technology",
-    "Bachelor of Industrial Technology major in Culinary Technology"
   ]
 });
 
