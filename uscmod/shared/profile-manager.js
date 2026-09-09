@@ -622,7 +622,7 @@ function createDrawer() {
     const style = document.createElement("link");
     style.id = "uscEmailSettingsStyles";
     style.rel = "stylesheet";
-    style.href = new URL("./email-settings.css?v=ui-repair-20260910", import.meta.url).href;
+    style.href = new URL("./email-settings.css?v=officer-checkbox-fix-20260910", import.meta.url).href;
     document.head.appendChild(style);
   }
   document.body.append(overlay, drawer);
