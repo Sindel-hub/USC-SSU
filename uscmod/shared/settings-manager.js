@@ -53,7 +53,7 @@ function injectStyles() {
   const link = document.createElement("link");
   link.id = "uscSettingsManagerStyles";
   link.rel = "stylesheet";
-  link.href = new URL("./settings-manager.css?v=no-theme-20260909", import.meta.url).href;
+  link.href = new URL("./settings-manager.css?v=ui-repair-20260910", import.meta.url).href;
   document.head.appendChild(link);
 }
 
