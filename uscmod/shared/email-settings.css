@@ -140,3 +140,179 @@
   .usc-profile-gmail .gmail-settings input[type=email],
   .usc-profile-gmail input[type=email]{font-size:11.5px!important}
 }
+
+
+/* =========================================================
+   POLISHED RECOVERY & EMAIL ALERTS CARD
+   Shared Student/Officer Gmail card refined to match reference.
+   ========================================================= */
+.usc-profile-gmail{
+  padding:20px!important;
+  border-radius:28px!important;
+}
+.usc-profile-gmail .gmail-card-head{
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:14px;
+}
+.usc-profile-gmail .gmail-card-icon{
+  width:54px;
+  height:54px;
+  flex:0 0 54px;
+  border-radius:18px;
+  font-size:20px;
+  background:linear-gradient(135deg,#edf6ff,#e6efff);
+}
+.usc-profile-gmail .gmail-card-title-wrap{
+  gap:14px;
+}
+.usc-profile-gmail .gmail-card-title-wrap strong{
+  font-size:18px;
+  line-height:1.08;
+  letter-spacing:-.02em;
+}
+.usc-profile-gmail .gmail-card-title-wrap span{
+  font-size:12px;
+  letter-spacing:.11em;
+}
+.usc-profile-gmail .gmail-self-service-badge{
+  padding:8px 14px;
+  font-size:11px;
+  border-radius:999px;
+}
+.usc-profile-gmail .gmail-card-intro{
+  font-size:13px!important;
+  line-height:1.6!important;
+  color:#6c8295!important;
+  margin-bottom:16px!important;
+}
+.usc-profile-gmail .gmail-status-card{
+  gap:14px;
+  padding:16px 16px;
+  border-radius:20px;
+  margin-bottom:18px;
+}
+.usc-profile-gmail .gmail-status-icon{
+  width:46px;
+  height:46px;
+  flex:0 0 46px;
+  border-radius:15px;
+  font-size:17px;
+}
+.usc-profile-gmail .gmail-status-copy strong{
+  font-size:14px;
+}
+.usc-profile-gmail .gmail-status-copy small{
+  font-size:12px;
+  line-height:1.5;
+}
+.usc-profile-gmail .gmail-field-label{
+  margin-bottom:10px;
+  font-size:13px;
+  letter-spacing:.08em;
+}
+.usc-profile-gmail .gmail-input-icon{
+  left:12px;
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  font-size:18px;
+}
+.usc-profile-gmail .gmail-settings input[type=email],
+.usc-profile-gmail input[type=email]{
+  height:54px;
+  padding-left:56px!important;
+  border-radius:18px;
+  font-size:15px!important;
+}
+.usc-profile-gmail .gmail-field-help{
+  margin:10px 0 18px!important;
+  font-size:12px!important;
+  line-height:1.55!important;
+}
+.usc-profile-gmail .gmail-preferences-head{
+  padding-top:16px;
+  margin-bottom:12px;
+}
+.usc-profile-gmail .gmail-preferences-head strong{
+  font-size:14px;
+}
+.usc-profile-gmail .gmail-preferences-head small{
+  font-size:12px;
+}
+.usc-profile-gmail .gmail-options{
+  gap:12px;
+}
+.usc-profile-gmail .gmail-option-row{
+  grid-template-columns:44px minmax(0,1fr) 26px;
+  gap:14px;
+  padding:14px 14px;
+  border-radius:18px;
+}
+.usc-profile-gmail .gmail-option-icon{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  font-size:16px;
+}
+.usc-profile-gmail .gmail-option-copy strong{
+  font-size:14px;
+}
+.usc-profile-gmail .gmail-option-copy small{
+  font-size:12px;
+  line-height:1.45;
+}
+.usc-profile-gmail .gmail-option-row input[type=checkbox]{
+  width:32px;
+  height:32px;
+  border-radius:10px;
+}
+.usc-profile-gmail .gmail-option-row input[type=checkbox]::after{
+  font-size:18px;
+}
+.usc-profile-gmail .gmail-actions{
+  gap:12px;
+  margin-top:18px;
+}
+.usc-profile-gmail .gmail-actions button{
+  height:54px;
+  border-radius:18px;
+  font-size:14px;
+}
+.usc-profile-gmail .gmail-security-note{
+  gap:12px;
+  margin-top:16px;
+  padding:16px;
+  border-radius:18px;
+}
+.usc-profile-gmail .gmail-security-note > i{
+  font-size:16px;
+}
+.usc-profile-gmail .gmail-security-note p,
+.usc-profile-gmail .gmail-message{
+  font-size:12px!important;
+  line-height:1.5!important;
+}
+
+@media(max-width:540px){
+  .usc-profile-gmail{padding:16px!important;border-radius:24px!important}
+  .usc-profile-gmail .gmail-card-icon{width:46px;height:46px;flex-basis:46px;border-radius:16px;font-size:18px}
+  .usc-profile-gmail .gmail-card-title-wrap strong{font-size:16px}
+  .usc-profile-gmail .gmail-card-title-wrap span{font-size:10.5px}
+  .usc-profile-gmail .gmail-self-service-badge{padding:7px 10px;font-size:10px}
+  .usc-profile-gmail .gmail-card-intro{font-size:12px!important}
+  .usc-profile-gmail .gmail-status-card{padding:14px;border-radius:18px}
+  .usc-profile-gmail .gmail-status-icon{width:40px;height:40px;flex-basis:40px;border-radius:13px;font-size:15px}
+  .usc-profile-gmail .gmail-status-copy strong{font-size:13px}
+  .usc-profile-gmail .gmail-status-copy small{font-size:11px}
+  .usc-profile-gmail .gmail-field-label{font-size:12px}
+  .usc-profile-gmail .gmail-input-icon{width:30px;height:30px;font-size:16px;left:11px}
+  .usc-profile-gmail .gmail-settings input[type=email], .usc-profile-gmail input[type=email]{height:50px;padding-left:50px!important;font-size:14px!important}
+  .usc-profile-gmail .gmail-field-help, .usc-profile-gmail .gmail-preferences-head small, .usc-profile-gmail .gmail-option-copy small, .usc-profile-gmail .gmail-security-note p, .usc-profile-gmail .gmail-message{font-size:11px!important}
+  .usc-profile-gmail .gmail-preferences-head strong, .usc-profile-gmail .gmail-option-copy strong{font-size:13px}
+  .usc-profile-gmail .gmail-option-row{grid-template-columns:40px minmax(0,1fr) 24px;gap:12px;padding:12px;border-radius:16px}
+  .usc-profile-gmail .gmail-option-icon{width:40px;height:40px;border-radius:13px;font-size:14px}
+  .usc-profile-gmail .gmail-option-row input[type=checkbox]{width:28px;height:28px}
+  .usc-profile-gmail .gmail-actions{grid-template-columns:1fr}
+  .usc-profile-gmail .gmail-actions button{height:48px;font-size:13px;border-radius:16px}
+}
