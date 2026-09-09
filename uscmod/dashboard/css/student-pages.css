@@ -6568,3 +6568,24 @@ body.student-app-shell .student-module-toolbar.tracklist-toolbar h1{
     margin-left: max(0px, var(--candidate-row-offset, 0px)) !important;
   }
 }
+
+
+/* =========================================================
+   STUDENT ELECTION — HOVER-AWARE CENTERED CANDIDATE ROWS
+   2026-09-10
+   Keep the whole candidate group centered even while one card expands
+   on hover or when a card is click-locked open.
+   ========================================================= */
+@media (min-width: 821px) {
+  .candidate-slant-grid-four {
+    justify-content: center !important;
+  }
+
+  .candidate-slant-grid-four[data-candidate-count] > .candidate-slant-card:first-child,
+  .candidate-slant-grid-four[data-candidate-count]:not(.is-accordion-active) > .candidate-slant-card:first-child:hover,
+  .candidate-slant-grid-four[data-candidate-count]:not(.is-accordion-active) > .candidate-slant-card:first-child:focus-visible,
+  .candidate-slant-grid-four[data-candidate-count].is-accordion-active > .candidate-slant-card:first-child.is-collapsed,
+  .candidate-slant-grid-four[data-candidate-count].is-accordion-active > .candidate-slant-card:first-child.is-expanded {
+    margin-left: 0 !important;
+  }
+}
