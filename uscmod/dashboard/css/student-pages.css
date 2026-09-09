@@ -6046,3 +6046,313 @@ body.student-app-shell .tracklist-page-main{
   .track-election-empty .track-empty-illustration{justify-self:center}
   .track-election-empty .track-primary-btn{grid-column:auto;width:100%;min-width:0}
 }
+
+/* =========================================================
+   STUDENT TRACKLIST UI BUGFIX + VISUAL SCALE REBALANCE
+   2026-09-10
+   Keeps the approved redesign, but fixes the undersized cards,
+   tiny labels, and compressed empty states seen on desktop.
+   ========================================================= */
+body.student-app-shell .tracklist-page-main{
+  padding:22px 22px 48px;
+}
+
+.tracklist-surface{
+  width:100%;
+  max-width:1500px;
+}
+
+body.student-app-shell .student-module-toolbar.tracklist-toolbar{
+  min-height:72px;
+  padding:9px 18px 9px 10px;
+}
+.tracklist-toolbar-icon{
+  width:46px;
+  height:46px;
+  flex-basis:46px;
+  border-radius:15px;
+  font-size:19px;
+}
+body.student-app-shell .student-module-toolbar.tracklist-toolbar h1{
+  font-size:27px;
+}
+.tracklist-toolbar-title p{
+  margin-top:5px;
+  font-size:12px;
+}
+
+.track-overview-banner{
+  border-radius:26px;
+}
+.track-hero-top{
+  min-height:196px;
+  grid-template-columns:minmax(0,1.2fr) minmax(350px,.8fr);
+  gap:24px;
+  padding:28px 30px 10px;
+}
+.track-eyebrow{
+  margin-bottom:9px;
+  font-size:11px;
+}
+.track-hero-copy h2{
+  font-size:clamp(34px,3vw,48px);
+}
+.track-hero-copy p{
+  margin-top:11px;
+  font-size:15px;
+}
+.track-overview-illustration{
+  min-height:170px;
+}
+.track-overview-illustration img{
+  width:min(100%,380px);
+  max-width:380px;
+  max-height:190px;
+}
+.track-campus-silhouette{
+  font-size:105px;
+}
+.track-hero-tagline{
+  top:15px;
+  right:1%;
+  font-size:18px;
+}
+
+.track-overview-cards{
+  gap:16px;
+  padding:0 22px 22px;
+}
+.mini-overview-card{
+  min-height:142px;
+  grid-template-columns:62px minmax(0,1fr);
+  gap:16px;
+  padding:20px;
+  border-radius:22px;
+}
+.overview-icon{
+  width:62px;
+  height:62px;
+  border-radius:19px;
+  font-size:24px;
+}
+.mini-overview-card small{
+  font-size:13px;
+}
+.mini-overview-card strong{
+  margin:5px 0 6px;
+  font-size:39px;
+}
+.mini-overview-card span{
+  font-size:11px;
+  line-height:1.35;
+}
+
+.track-dashboard-grid{
+  grid-template-columns:minmax(0,1.52fr) minmax(340px,.92fr);
+  gap:18px;
+  margin-top:18px;
+}
+.track-card{
+  border-radius:24px;
+}
+.track-card-head{
+  gap:18px;
+  padding:19px 20px 15px;
+}
+.track-card-heading{
+  gap:14px;
+}
+.track-card-icon{
+  width:50px;
+  height:50px;
+  flex-basis:50px;
+  border-radius:16px;
+  font-size:19px;
+}
+.track-card-head h2{
+  font-size:24px;
+}
+.track-card-head p{
+  margin-top:6px;
+  font-size:11.5px;
+  line-height:1.4;
+}
+.track-card-link{
+  gap:8px;
+  padding:9px 3px;
+  font-size:11px;
+}
+.track-card-content,
+.activity-list{
+  min-height:280px;
+  margin:0 20px 20px;
+  border-radius:20px;
+}
+
+.track-empty-state{
+  min-height:280px;
+  gap:8px;
+  padding:26px;
+}
+.track-empty-illustration{
+  width:104px;
+  height:82px;
+  margin-bottom:4px;
+  font-size:48px;
+}
+.track-empty-illustration::before,
+.track-empty-illustration::after{
+  width:58px;
+  height:21px;
+}
+.track-empty-state h3,
+.track-election-empty h3{
+  font-size:16px;
+}
+.track-empty-state p,
+.track-election-empty p{
+  font-size:12px;
+  line-height:1.5;
+}
+.track-primary-btn{
+  min-height:46px;
+  margin-top:10px;
+  padding:0 22px;
+  border-radius:13px;
+  font-size:12px;
+}
+
+.activity-list{
+  gap:10px;
+  padding:14px;
+}
+.activity-list .track-empty-state{
+  min-height:250px;
+}
+.activity-item{
+  grid-template-columns:42px minmax(0,1fr);
+  gap:12px;
+  padding:13px;
+  border-radius:15px;
+}
+.activity-icon{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  font-size:14px;
+}
+.activity-item h4{
+  font-size:12px;
+}
+.activity-item p{
+  font-size:11px;
+}
+.activity-item small{
+  font-size:9.5px;
+}
+
+.track-election-empty{
+  min-height:172px;
+  grid-template-columns:170px minmax(0,1fr) auto;
+  gap:24px;
+  padding:24px 28px;
+}
+.track-election-empty .track-empty-illustration{
+  width:140px;
+  height:100px;
+  font-size:60px;
+}
+.track-election-empty .track-primary-btn{
+  min-width:165px;
+}
+
+.complaint-preview-box,
+.vote-preview-box{
+  min-height:280px;
+  padding:24px;
+}
+.complaint-preview-box h3,
+.vote-preview-box h3{
+  font-size:20px;
+}
+.preview-meta{
+  font-size:12px;
+}
+.complaint-preview-classification{
+  font-size:11px;
+}
+
+/* Preserve a clean layout instead of compressing the cards too far. */
+@media(max-width:1280px){
+  .track-hero-top{
+    grid-template-columns:minmax(0,1fr) 320px;
+    padding:24px 24px 9px;
+  }
+  .track-overview-illustration img{max-width:315px}
+  .track-overview-cards{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:13px;
+  }
+  .track-dashboard-grid{
+    grid-template-columns:minmax(0,1.35fr) minmax(310px,.9fr);
+  }
+}
+
+@media(max-width:980px){
+  .track-hero-top{
+    grid-template-columns:1fr;
+    min-height:0;
+    padding-bottom:0;
+  }
+  .track-overview-illustration{
+    min-height:145px;
+  }
+  .track-overview-illustration img{
+    max-width:330px;
+    max-height:150px;
+  }
+  .track-dashboard-grid{grid-template-columns:1fr}
+  .track-card.election-participation-card{grid-column:auto}
+  .track-election-empty{
+    grid-template-columns:120px minmax(0,1fr);
+    gap:18px;
+  }
+  .track-election-empty .track-primary-btn{
+    grid-column:1/-1;
+    justify-self:center;
+  }
+}
+
+@media(max-width:680px){
+  body.student-app-shell .tracklist-page-main{padding:12px 10px 34px}
+  body.student-app-shell .student-module-toolbar.tracklist-toolbar{min-height:58px;padding:7px 10px}
+  .tracklist-toolbar-icon{width:38px;height:38px;flex-basis:38px;border-radius:12px;font-size:16px}
+  body.student-app-shell .student-module-toolbar.tracklist-toolbar h1{font-size:20px}
+  .tracklist-toolbar-title p{display:none}
+  .track-overview-banner{border-radius:20px}
+  .track-hero-top{padding:18px 16px 0}
+  .track-hero-copy h2{font-size:29px}
+  .track-hero-copy p{font-size:12.5px}
+  .track-overview-illustration{display:none}
+  .track-overview-cards{grid-template-columns:1fr;gap:10px;padding:14px}
+  .mini-overview-card{min-height:100px;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:14px;border-radius:18px}
+  .overview-icon{width:48px;height:48px;border-radius:15px;font-size:19px}
+  .mini-overview-card small{font-size:12px}
+  .mini-overview-card strong{font-size:30px}
+  .mini-overview-card span{font-size:10px}
+  .track-card{border-radius:20px}
+  .track-card-head{padding:15px 14px 11px}
+  .track-card-heading{gap:10px}
+  .track-card-icon{width:42px;height:42px;flex-basis:42px;border-radius:13px;font-size:16px}
+  .track-card-head h2{font-size:18px}
+  .track-card-head p{font-size:9.5px}
+  .track-card-link{font-size:9px}
+  .track-card-content,.activity-list{min-height:220px;margin:0 12px 12px;border-radius:16px}
+  .track-empty-state{min-height:220px;padding:18px}
+  .track-empty-illustration{width:82px;height:66px;font-size:38px}
+  .track-empty-state h3,.track-election-empty h3{font-size:14px}
+  .track-empty-state p,.track-election-empty p{font-size:11px}
+  .track-election-empty{min-height:0;grid-template-columns:1fr;text-align:center;padding:20px}
+  .track-election-empty .track-empty-illustration{justify-self:center}
+  .track-election-empty .track-primary-btn{grid-column:auto;width:100%;min-width:0}
+}
