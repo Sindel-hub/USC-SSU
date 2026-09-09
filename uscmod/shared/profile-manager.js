@@ -622,7 +622,7 @@ function createDrawer() {
     const style = document.createElement("link");
     style.id = "uscEmailSettingsStyles";
     style.rel = "stylesheet";
-    style.href = new URL("./email-settings.css", import.meta.url).href;
+    style.href = new URL("./email-settings.css?v=ui-repair-20260910", import.meta.url).href;
     document.head.appendChild(style);
   }
   document.body.append(overlay, drawer);
@@ -662,11 +662,7 @@ function fillDrawer(profile) {
   document.getElementById("uscProfileStudentIdRow").hidden = !profile.studentId;
   document.getElementById("uscProfilePositionRow").hidden = profile.role === "student";
   const gmailSettings = document.getElementById("gmailSettings");
-  if (gmailSettings) {
-    gmailSettings.hidden = !["student", "officer"].includes(profile.role);
-    const badge = gmailSettings.querySelector(".gmail-self-service-badge");
-    if (badge) badge.textContent = profile.role === "officer" ? "Officer self-service" : "Student self-service";
-  }
+  if (gmailSettings) gmailSettings.hidden = !["student", "officer"].includes(profile.role);
 
   const status = document.getElementById("uscProfileStatus");
   status.textContent = profile.isActive === false ? "Restricted" : (profile.accountStatus || "approved").replace(/^./, (c) => c.toUpperCase());
