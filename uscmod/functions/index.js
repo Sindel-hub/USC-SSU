@@ -204,6 +204,21 @@ function cleanText(value, max = 180) {
   return String(value || "").trim().replace(/\s+/g, " ").slice(0, max);
 }
 
+function normalizedIdentityName(value) {
+  return cleanText(value, 120)
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function identityNameClaimId(value) {
+  const normalized = normalizedIdentityName(value);
+  if (!normalized) throw new HttpsError("invalid-argument", "Enter the account holder's full name.");
+  return crypto.createHash("sha256").update(normalized, "utf8").digest("hex");
+}
+
 function bool(value) {
   return value === true || String(value).toLowerCase() === "true" || String(value) === "1";
 }
@@ -537,13 +552,19 @@ exports.provisionSchoolAccounts = onCall(callableOptions({ timeoutSeconds: 540, 
   for (const row of cleanRows) {
     const accountRef = db.doc(`school_accounts/${row.studentId}`);
     const claimRef = db.doc(`student_id_claims/${row.studentId}`);
-    const [existingAccountSnap, existingClaimSnap] = await Promise.all([accountRef.get(), claimRef.get()]);
+    const nameClaimId = identityNameClaimId(row.fullName);
+    const nameClaimRef = db.doc(`student_name_claims/${nameClaimId}`);
+    const [existingAccountSnap, existingClaimSnap, existingNameClaimSnap] = await Promise.all([accountRef.get(), claimRef.get(), nameClaimRef.get()]);
     const accountUid = existingAccountSnap.exists ? cleanText(existingAccountSnap.get("uid"), 160) : "";
     const claimedUid = existingClaimSnap.exists ? cleanText(existingClaimSnap.get("uid"), 160) : "";
     if (accountUid && claimedUid && accountUid !== claimedUid) {
       throw new HttpsError("already-exists", `Student ID ${row.studentId} has conflicting account ownership records. Resolve it before provisioning.`);
     }
     const linkedUid = accountUid || claimedUid;
+    const nameClaimUid = existingNameClaimSnap.exists ? cleanText(existingNameClaimSnap.get("uid"), 160) : "";
+    if (nameClaimUid && (!linkedUid || nameClaimUid !== linkedUid)) {
+      throw new HttpsError("already-exists", `The full name ${row.fullName} is already assigned to another school account.`);
+    }
 
     let authUser = null;
     let temporaryPassword = "";
@@ -637,6 +658,17 @@ exports.provisionSchoolAccounts = onCall(callableOptions({ timeoutSeconds: 540, 
       email: row.email,
       claimedAt: existingClaimSnap.exists ? existingClaimSnap.get("claimedAt") || FieldValue.serverTimestamp() : FieldValue.serverTimestamp(),
       updatedAt: FieldValue.serverTimestamp()
+    }, { merge: true });
+    batch.set(nameClaimRef, {
+      nameKey: nameClaimId,
+      normalizedName: normalizedIdentityName(row.fullName),
+      fullName: row.fullName,
+      studentId: row.studentId,
+      uid: authUser.uid,
+      accountRole: "student",
+      createdBy: request.auth.uid,
+      updatedAt: FieldValue.serverTimestamp(),
+      ...(existingNameClaimSnap.exists ? {} : { createdAt: FieldValue.serverTimestamp() })
     }, { merge: true });
     batch.set(userRef, {
       uid: authUser.uid,
