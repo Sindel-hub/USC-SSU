@@ -662,7 +662,11 @@ function fillDrawer(profile) {
   document.getElementById("uscProfileStudentIdRow").hidden = !profile.studentId;
   document.getElementById("uscProfilePositionRow").hidden = profile.role === "student";
   const gmailSettings = document.getElementById("gmailSettings");
-  if (gmailSettings) gmailSettings.hidden = !["student", "officer"].includes(profile.role);
+  if (gmailSettings) {
+    gmailSettings.hidden = !["student", "officer"].includes(profile.role);
+    const badge = gmailSettings.querySelector(".gmail-self-service-badge");
+    if (badge) badge.textContent = profile.role === "officer" ? "Officer self-service" : "Student self-service";
+  }
 
   const status = document.getElementById("uscProfileStatus");
   status.textContent = profile.isActive === false ? "Restricted" : (profile.accountStatus || "approved").replace(/^./, (c) => c.toUpperCase());
