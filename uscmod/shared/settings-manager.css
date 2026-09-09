@@ -849,3 +849,216 @@ html[data-usc-effective-theme="dark"] .usc-setting-toggle-row input:checked + .u
     transform:translateX(28px);
   }
 }
+
+
+/* =========================================================
+   OFFICER + STUDENT SETTINGS PORTAL POLISH
+   Align the shared settings portal with the polished reference.
+   ========================================================= */
+.usc-settings-drawer{
+  width:min(460px,96vw);
+  background:linear-gradient(180deg,#f7fbff 0%,#ffffff 32%,#f6fbff 100%);
+}
+.usc-settings-head{
+  padding:30px 30px 24px;
+  background:linear-gradient(135deg,#14508e 0%,#1b6fb4 52%,#28afe7 100%);
+}
+.usc-settings-head::after{
+  width:210px;
+  height:210px;
+  right:-62px;
+  top:-74px;
+  background:rgba(255,255,255,.10);
+}
+.usc-settings-head>div>span{
+  font-size:12px;
+  letter-spacing:.22em;
+  color:#dbf4ff;
+}
+.usc-settings-head h2{
+  font-size:30px;
+  letter-spacing:-.03em;
+}
+.usc-settings-head p{
+  margin-top:10px;
+  max-width:330px;
+  font-size:13px;
+  line-height:1.55;
+  color:rgba(245,251,255,.9);
+}
+.usc-settings-head button{
+  width:50px;
+  height:50px;
+  min-width:50px;
+  border-radius:16px;
+  backdrop-filter:blur(8px);
+}
+.usc-settings-body{
+  padding:18px 20px 12px;
+}
+.usc-settings-section{
+  padding:18px;
+  border-radius:28px;
+  background:linear-gradient(180deg,#ffffff 0%,#fcfeff 100%);
+  box-shadow:0 12px 28px rgba(24,72,115,.06);
+  margin-bottom:18px;
+}
+.usc-settings-section-head{
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:16px;
+}
+.usc-settings-section-icon{
+  width:46px;
+  height:46px;
+  min-width:46px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#eef7ff,#e7f0ff);
+  color:#1f84c6;
+  font-size:19px;
+}
+.usc-settings-section-head strong{
+  font-size:18px;
+  letter-spacing:-.02em;
+}
+.usc-settings-section-head small{
+  font-size:12px;
+  line-height:1.5;
+  color:#70879c;
+}
+.usc-setting-toggle-row{
+  gap:16px;
+  padding:18px 18px;
+  margin-top:12px;
+  border:1px solid #dbe8f2;
+  border-radius:22px;
+  background:linear-gradient(180deg,#ffffff 0%,#f9fcff 100%);
+}
+.usc-setting-toggle-row:first-of-type{
+  border-top:1px solid #dbe8f2;
+}
+.usc-setting-toggle-row + .usc-setting-toggle-row{
+  margin-top:14px;
+}
+.usc-setting-copy strong{
+  font-size:14px;
+  color:#2f5372;
+}
+.usc-setting-copy small{
+  margin-top:5px;
+  font-size:12px;
+  line-height:1.55;
+  color:#768b9d;
+}
+.usc-switch{
+  width:88px;
+  height:46px;
+  min-width:88px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#f5f8fb,#e4edf4);
+  box-shadow:inset 0 0 0 1px rgba(88,118,146,.16), 0 8px 18px rgba(78,115,148,.10);
+}
+.usc-switch::before{
+  content:"OFF";
+  position:absolute;
+  right:17px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.12em;
+  color:#6f8192;
+}
+.usc-switch::after{
+  width:36px;
+  height:36px;
+  left:5px;
+  top:5px;
+  box-shadow:0 8px 18px rgba(49,85,118,.18);
+}
+.usc-setting-toggle-row input:checked + .usc-switch{
+  background:linear-gradient(135deg,#16a8de,#2e76cb);
+}
+.usc-setting-toggle-row input:checked + .usc-switch::before{
+  content:"ON";
+  left:16px;
+  right:auto;
+  color:#ffffff;
+}
+.usc-setting-toggle-row input:checked + .usc-switch::after{
+  transform:translateX(42px);
+}
+.usc-settings-action-card{
+  grid-template-columns:52px 1fr auto;
+  gap:14px;
+  padding:18px;
+  margin-top:14px;
+  border-radius:22px;
+}
+.usc-settings-action-icon{
+  width:52px;
+  height:52px;
+  border-radius:17px;
+  background:linear-gradient(135deg,#edf6ff,#e8efff);
+  color:#2680c1;
+  font-size:22px;
+}
+.usc-settings-action-card strong{
+  font-size:15px;
+}
+.usc-settings-action-card small{
+  margin-top:4px;
+  font-size:12px;
+  line-height:1.5;
+}
+.usc-settings-action-card > i{
+  font-size:20px;
+  color:#8ca1b4;
+}
+.usc-settings-secondary-btn{
+  min-height:52px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:900;
+}
+.usc-settings-maintenance p{
+  margin-top:12px;
+  font-size:12px;
+  line-height:1.5;
+}
+.usc-settings-logout{
+  margin:10px 20px 20px;
+  min-height:52px;
+  border-radius:18px;
+  font-size:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+@media(max-width:540px){
+  .usc-settings-drawer{width:100vw}
+  .usc-settings-head{padding:24px 20px 18px}
+  .usc-settings-head h2{font-size:24px}
+  .usc-settings-head p{font-size:12px;max-width:unset}
+  .usc-settings-head button{width:42px;height:42px;min-width:42px;border-radius:14px}
+  .usc-settings-body{padding:14px 14px 10px}
+  .usc-settings-section{padding:16px;border-radius:24px;margin-bottom:14px}
+  .usc-settings-section-head strong{font-size:16px}
+  .usc-settings-section-head small{font-size:11px}
+  .usc-settings-section-icon{width:42px;height:42px;min-width:42px}
+  .usc-setting-toggle-row{padding:14px 14px;gap:12px;border-radius:18px}
+  .usc-setting-copy strong{font-size:13px}
+  .usc-setting-copy small{font-size:11px}
+  .usc-switch{width:76px;height:40px;min-width:76px}
+  .usc-switch::before{font-size:12px;right:14px}
+  .usc-switch::after{width:30px;height:30px;left:5px;top:5px}
+  .usc-setting-toggle-row input:checked + .usc-switch::after{transform:translateX(36px)}
+  .usc-settings-action-card{grid-template-columns:44px 1fr auto;padding:14px;gap:12px;border-radius:18px}
+  .usc-settings-action-icon{width:44px;height:44px;border-radius:14px;font-size:19px}
+  .usc-settings-action-card strong{font-size:14px}
+  .usc-settings-action-card small{font-size:11px}
+  .usc-settings-action-card > i{font-size:16px}
+  .usc-settings-secondary-btn,.usc-settings-logout{min-height:46px;font-size:13px;border-radius:16px}
+}
