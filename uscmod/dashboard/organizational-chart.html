@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="css/dashboard.css" />
   <link rel="stylesheet" href="css/student-pages.css" />
+  <link rel="stylesheet" href="css/organizational-chart.css?v=officer-match-1" />
 <link rel="stylesheet" href="../shared/profile-manager.css" />
   <script src="../shared/app-config.js"></script>
   <script type="module" src="../shared/auth-guard.js"></script>
 </head>
-<body class="student-app-shell">
+<body class="student-app-shell student-org-officer-match">
   <header class="dashboard-header">
     <div class="dashboard-brand">
       <img src="assets/SSUlogo.webp" alt="SSU Seal" />
@@ -56,32 +57,60 @@
         </div>
       </div>
 
-      <main class="student-page-main orgchart-styled-main">
-        <section class="orgchart-showcase">
-          <div class="orgchart-blur-bg"></div>
-          <div class="orgchart-overlay"></div>
-          <div class="orgchart-schematic">
-            <div class="org-tier tier-1">
-              <article class="org-box focus">
-                <div class="org-avatar"><i class="fa-solid fa-user"></i></div>
-                <div class="org-label">President</div>
+      <main class="student-page-main student-org-main">
+        <section class="student-officer-org-card">
+          <div class="student-officer-org-bg" aria-hidden="true"></div>
+          <div class="student-officer-org-shade" aria-hidden="true"></div>
+
+          <div class="student-officer-org-content">
+            <div class="student-org-title-block">
+              <span class="student-org-hero-icon" aria-hidden="true"><i class="fa-solid fa-sitemap"></i></span>
+              <div>
+                <span class="student-org-kicker">COUNCIL STRUCTURE CENTER</span>
+                <h1>Organizational Chart</h1>
+                <p>View the University Student Council structure, responsibilities, and representative groups.</p>
+              </div>
+            </div>
+
+            <section class="student-org-function-strip" aria-label="Council structure groups">
+              <article>
+                <span class="student-org-function-icon"><i class="fa-solid fa-crown"></i></span>
+                <div><strong>Executive Leadership</strong><small>President and Vice President leadership roles.</small></div>
               </article>
-            </div>
-            <div class="connector vertical top"></div>
-            <div class="connector horizontal first"></div>
-            <div class="org-tier tier-2">
-              <article class="org-box"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">Vice President</div></article>
-              <article class="org-box"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">Secretary</div></article>
-              <article class="org-box"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">Treasurer</div></article>
-              <article class="org-box"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">Auditor</div></article>
-              <article class="org-box"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">P.R.O.</div></article>
-            </div>
-            <div class="org-tier tier-3">
-              <article class="org-box small"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">1st Year Rep</div></article>
-              <article class="org-box small"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">2nd Year Rep</div></article>
-              <article class="org-box small"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">3rd Year Rep</div></article>
-              <article class="org-box small"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">4th Year Rep</div></article>
-              <article class="org-box small"><div class="org-avatar"><i class="fa-solid fa-user"></i></div><div class="org-label">Committee Heads</div></article>
+              <article>
+                <span class="student-org-function-icon"><i class="fa-solid fa-gears"></i></span>
+                <div><strong>Core Operations</strong><small>Records, finance, audit, communication, and support.</small></div>
+              </article>
+              <article>
+                <span class="student-org-function-icon"><i class="fa-solid fa-people-group"></i></span>
+                <div><strong>Representation</strong><small>Department representatives connect colleges to the USC.</small></div>
+              </article>
+            </section>
+
+            <div class="student-org-tree" aria-label="University Student Council organizational chart">
+              <div class="student-org-row student-org-row-top">
+                <article class="student-org-node student-org-node-president">
+                  <div class="student-org-avatar"><i class="fa-solid fa-crown"></i></div>
+                  <strong>President</strong>
+                  <small>University Student Council</small>
+                </article>
+              </div>
+
+              <div class="student-org-branch" aria-hidden="true"></div>
+
+              <div class="student-org-row student-org-row-mid">
+                <article class="student-org-node"><div class="student-org-avatar"><i class="fa-solid fa-user-tie"></i></div><strong>Vice President</strong><small>Executive Support</small></article>
+                <article class="student-org-node"><div class="student-org-avatar"><i class="fa-solid fa-file-lines"></i></div><strong>Secretary</strong><small>Records &amp; Documentation</small></article>
+                <article class="student-org-node"><div class="student-org-avatar"><i class="fa-solid fa-coins"></i></div><strong>Treasurer</strong><small>Financial Management</small></article>
+                <article class="student-org-node"><div class="student-org-avatar"><i class="fa-solid fa-clipboard-check"></i></div><strong>Auditor</strong><small>Audit &amp; Compliance</small></article>
+                <article class="student-org-node"><div class="student-org-avatar"><i class="fa-solid fa-bullhorn"></i></div><strong>P.R.O.</strong><small>Public Relations</small></article>
+              </div>
+
+              <div class="student-org-row student-org-row-low">
+                <article class="student-org-node student-org-node-wide"><div class="student-org-avatar"><i class="fa-solid fa-briefcase"></i></div><strong>Business Manager</strong><small>Projects &amp; Resources</small></article>
+                <article class="student-org-node student-org-node-wide"><div class="student-org-avatar"><i class="fa-solid fa-shield-halved"></i></div><strong>Sergeant-at-Arms</strong><small>Order &amp; Discipline</small></article>
+                <article class="student-org-node student-org-node-wide"><div class="student-org-avatar"><i class="fa-solid fa-people-group"></i></div><strong>Department Representatives</strong><small>College Representatives</small></article>
+              </div>
             </div>
           </div>
         </section>
