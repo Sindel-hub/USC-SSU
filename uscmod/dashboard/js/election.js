@@ -597,7 +597,7 @@ function candidateGalleryGroup(position, rows) {
 
   return `<section class="candidate-view-section" data-position="${esc(position)}">
     <h2>${heading}</h2>
-    ${chunks.map((chunk) => `<div class="candidate-slant-grid candidate-slant-grid-four" data-candidate-accordion>
+    ${chunks.map((chunk) => `<div class="candidate-slant-grid candidate-slant-grid-four" data-candidate-accordion data-candidate-count="${chunk.length}">
       ${chunk.map(candidateSlantCard).join("")}
     </div>`).join("")}
   </section>`;
