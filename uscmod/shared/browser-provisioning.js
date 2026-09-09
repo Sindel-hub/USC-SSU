@@ -14,6 +14,7 @@ import {
 import {
   doc,
   getDoc,
+  getDocs,
   collection,
   writeBatch,
   serverTimestamp
@@ -30,6 +31,31 @@ function normalizeEmail(value) {
 }
 function normalizeStudentId(value) {
   return String(value ?? "").replace(/\D/g, "").slice(0, 6);
+}
+function normalizeFullName(value) {
+  return clean(value, 120)
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+async function fullNameClaimId(value) {
+  const normalized = normalizeFullName(value);
+  if (!normalized) throw new Error("Enter the account holder's full name.");
+  return sha256Hex(normalized);
+}
+async function existingMasterlistNameMatch(fullName) {
+  const normalized = normalizeFullName(fullName);
+  if (!normalized) return null;
+  const snapshot = await getDocs(collection(db, "student_masterlist"));
+  for (const item of snapshot.docs) {
+    const data = item.data() || {};
+    if (normalizeFullName(data.fullName) === normalized) {
+      return { studentId: clean(data.studentId || item.id, 30), fullName: clean(data.fullName, 120) };
+    }
+  }
+  return null;
 }
 async function sha256Hex(value) {
   const bytes = new TextEncoder().encode(String(value || ""));
@@ -97,16 +123,24 @@ export async function provisionStudentAccount(input = {}) {
   if (!yearLevel) throw new Error("Select the student's year level.");
 
   const claimRef = doc(db, "student_id_claims", studentId);
+  const nameClaimId = await fullNameClaimId(fullName);
+  const nameClaimRef = doc(db, "student_name_claims", nameClaimId);
   let existingClaim;
+  let existingNameClaim;
   try {
-    existingClaim = await getDoc(claimRef);
+    [existingClaim, existingNameClaim] = await Promise.all([getDoc(claimRef), getDoc(nameClaimRef)]);
   } catch (error) {
     if (error?.code === "permission-denied") {
       throw new Error("Student account creation is blocked by Firestore permissions. Publish the firestore.rules included with this project in Firebase Console, then sign out and sign back in as System Administrator.");
     }
     throw error;
   }
-  if (existingClaim.exists()) throw new Error("This Student ID is already assigned to a school account.");
+  if (existingClaim.exists()) throw new Error("This Student ID is already assigned to a school account. Duplicate Student IDs are not allowed.");
+  if (existingNameClaim.exists()) throw new Error("This full name is already assigned to a school account. Duplicate account names are not allowed.");
+  const existingNameRecord = await existingMasterlistNameMatch(fullName);
+  if (existingNameRecord) {
+    throw new Error(`This full name is already used by Student ID ${existingNameRecord.studentId || "an existing account"}. Duplicate account names are not allowed.`);
+  }
 
   // A secondary Firebase app keeps the System Administrator signed in on the
   // primary app while Firebase Authentication creates the student's account.
@@ -153,6 +187,17 @@ export async function provisionStudentAccount(input = {}) {
       uid,
       institutionalEmail,
       authEmail: institutionalEmail,
+      createdBy: adminUser.uid,
+      updatedAt: now
+    });
+
+    batch.set(nameClaimRef, {
+      nameKey: nameClaimId,
+      normalizedName: normalizeFullName(fullName),
+      fullName,
+      studentId,
+      uid,
+      accountRole: "student",
       createdBy: adminUser.uid,
       updatedAt: now
     });
@@ -301,16 +346,24 @@ export async function provisionOfficerAccount(input = {}) {
   if (!USC_OFFICER_POSITIONS.includes(officePosition)) throw new Error("Select a valid USC officer position.");
 
   const claimRef = doc(db, "student_id_claims", studentId);
+  const nameClaimId = await fullNameClaimId(fullName);
+  const nameClaimRef = doc(db, "student_name_claims", nameClaimId);
   let existingClaim;
+  let existingNameClaim;
   try {
-    existingClaim = await getDoc(claimRef);
+    [existingClaim, existingNameClaim] = await Promise.all([getDoc(claimRef), getDoc(nameClaimRef)]);
   } catch (error) {
     if (error?.code === "permission-denied") {
       throw new Error("Officer account creation is blocked by Firestore permissions. Publish the firestore.rules included with this project in Firebase Console, then sign out and sign back in as System Administrator.");
     }
     throw error;
   }
-  if (existingClaim.exists()) throw new Error("This Student ID is already assigned to a school account.");
+  if (existingClaim.exists()) throw new Error("This Student ID is already assigned to a school account. Duplicate Student IDs are not allowed.");
+  if (existingNameClaim.exists()) throw new Error("This full name is already assigned to a school account. Duplicate account names are not allowed.");
+  const existingNameRecord = await existingMasterlistNameMatch(fullName);
+  if (existingNameRecord) {
+    throw new Error(`This full name is already used by Student ID ${existingNameRecord.studentId || "an existing account"}. Duplicate account names are not allowed.`);
+  }
 
   const appName = `usc-officer-provision-${Date.now()}-${Math.random().toString(36).slice(2)}`;
   const provisioningApp = initializeApp(firebaseConfig, appName);
@@ -369,6 +422,17 @@ export async function provisionOfficerAccount(input = {}) {
       authEmail: institutionalEmail,
       createdBy: adminUser.uid,
       accountRole: "officer",
+      updatedAt: now
+    });
+
+    batch.set(nameClaimRef, {
+      nameKey: nameClaimId,
+      normalizedName: normalizeFullName(fullName),
+      fullName,
+      studentId,
+      uid,
+      accountRole: "officer",
+      createdBy: adminUser.uid,
       updatedAt: now
     });
 
