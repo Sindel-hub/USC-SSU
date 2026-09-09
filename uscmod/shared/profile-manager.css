@@ -571,3 +571,170 @@ html.usc-profile-scroll-locked,body.usc-profile-scroll-locked,body.usc-profile-d
     margin-right:17px;
   }
 }
+
+
+/* =========================================================
+   OFFICER PROFILE PORTAL MATCH
+   Make the officer profile drawer visually match the polished
+   student portal cards and the recovery-email reference.
+   ========================================================= */
+.usc-profile-drawer[data-profile-role="officer"]{
+  width:min(540px,100vw);
+  background:linear-gradient(180deg,#f7fbff 0%,#ffffff 30%,#f7fbff 100%);
+  box-shadow:-26px 0 62px rgba(14,44,83,.24);
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head{
+  padding:24px 24px 28px;
+  background:linear-gradient(135deg,#14518f 0%,#1a6eaf 54%,#27ade6 100%);
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head::before{
+  width:190px;
+  height:190px;
+  right:-58px;
+  top:-68px;
+  background:rgba(255,255,255,.11);
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head span{
+  font-size:11px;
+  letter-spacing:.22em;
+  color:#dff3ff;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head h2{
+  font-size:26px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head button{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-section,
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-card,
+.usc-profile-drawer[data-profile-role="officer"] #gmailSettings{
+  margin-left:24px;
+  margin-right:24px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-section{
+  margin-top:18px;
+  padding:18px;
+  border-radius:26px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-preview{
+  border-radius:50%;
+  outline:2px solid rgba(188,216,236,.82);
+  box-shadow:0 12px 28px rgba(20,72,120,.18);
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-actions > strong{
+  font-size:18px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-actions > small{
+  font-size:12px;
+  color:#7b90a3;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-buttons{
+  gap:10px;
+  flex-wrap:wrap;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-buttons button{
+  min-height:42px;
+  padding:0 16px;
+  border-radius:14px;
+  font-size:12px;
+  font-weight:900;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-help{
+  font-size:12px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-form{
+  padding:18px 24px 10px;
+  gap:14px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-form label{
+  font-size:11px;
+  letter-spacing:.16em;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-form input{
+  height:54px;
+  margin-top:8px;
+  padding:0 16px;
+  border-radius:16px!important;
+  font-size:15px!important;
+  font-weight:800!important;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-account-status{
+  min-height:54px;
+  padding:14px 16px;
+  border-radius:16px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-account-status span{
+  font-size:12px;
+  letter-spacing:.06em;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-account-status strong{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-message{
+  font-size:12px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-save{
+  height:54px;
+  border-radius:18px;
+  font-size:15px;
+  font-weight:900;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-card{
+  padding:18px;
+  border-radius:24px;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-head strong{
+  font-size:17px;
+  color:#173f68;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-head small{
+  font-size:11px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-card p{
+  font-size:12px;
+  line-height:1.6;
+  color:#698097;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-card label{
+  font-size:12px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-card input{
+  height:52px;
+  margin-top:7px;
+  padding:0 15px;
+  font-size:14px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-message{
+  font-size:12px;
+}
+.usc-profile-drawer[data-profile-role="officer"] .usc-profile-logout{
+  margin:16px 24px 24px;
+  min-height:54px;
+  border-radius:18px;
+  font-size:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+@media(max-width:620px){
+  .usc-profile-drawer[data-profile-role="officer"]{width:100vw}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head{padding:22px 20px 22px}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head h2{font-size:22px}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-drawer-head button{width:42px;height:42px;border-radius:14px}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-section,
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-password-card,
+  .usc-profile-drawer[data-profile-role="officer"] #gmailSettings,
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-logout{margin-left:16px;margin-right:16px}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-section{grid-template-columns:82px minmax(0,1fr);padding:16px;border-radius:22px}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-photo-preview{width:82px;height:82px}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-form{padding-left:16px;padding-right:16px;gap:12px}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-form input{height:50px;font-size:14px!important}
+  .usc-profile-drawer[data-profile-role="officer"] .usc-profile-save,.usc-profile-drawer[data-profile-role="officer"] .usc-profile-logout{min-height:48px;height:48px;font-size:14px;border-radius:16px}
+}
