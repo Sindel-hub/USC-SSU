@@ -636,14 +636,8 @@ function wireCandidateFlashcardFlow() {
     cards.forEach((card) => {
       card.setAttribute("aria-expanded", "false");
 
-      card.addEventListener("mouseenter", () => {
-        if (!grid.dataset.lockedCandidate) activateCandidateAccordion(grid, card);
-      });
-
-      card.addEventListener("focus", () => {
-        if (!grid.dataset.lockedCandidate) activateCandidateAccordion(grid, card);
-      });
-
+      /* Hover/focus expansion is handled by CSS so the row does not constantly
+         collapse/reflow underneath the pointer. Clicking still locks a card open. */
       card.addEventListener("click", (event) => {
         event.preventDefault();
         const id = clean(card.dataset.candidateId);
