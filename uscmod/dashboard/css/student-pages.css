@@ -839,7 +839,7 @@ button.events-calendar-day:hover { background: #eef5ff; }
 .track-overview-body{display:flex;justify-content:space-between;align-items:stretch;gap:16px;padding:10px 14px 0}
 .track-overview-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;flex:1}
 .mini-overview-card{background:linear-gradient(180deg,#6dd5f4,#20a9ea);border:1px solid #4d6ca5;border-radius:10px;box-shadow:0 8px 18px rgba(25,92,154,.12);padding:12px 10px;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff}
-.mini-overview-card small{font-size:11px;opacity:.8}.mini-overview-card strong{font-size:40px;line-height:1;color:#143f78;margin:2px 0 4px}.mini-overview-card span{font-size:11px;opacity:.95}
+.mini-overview-card small{font-size:11px;opacity:.8}.mini-overview-card strong{font-size:40px;line-height:1;color:#143f78;margin:2px 0 4px}.mini-overview-card .overview-copy span{font-size:11px;opacity:.95}
 .track-overview-illustration{display:flex;align-items:flex-end;justify-content:flex-end;min-width:150px}.track-overview-illustration img{max-width:170px;object-fit:contain}
 .track-dashboard-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;margin-top:16px}
 .track-card{background:#fff;border:1px solid #bfc9d8;border-radius:16px;box-shadow:0 10px 26px rgba(16,74,122,.06);padding:14px 16px}
@@ -5716,9 +5716,9 @@ body.student-app-shell .tracklist-page-main{
 .resolved .overview-icon{background:#d4f3e3;color:#169565}
 .election .overview-icon{background:#e3dcff;color:#6039c7}
 .overview-copy{min-width:0;position:relative;z-index:2}
-.mini-overview-card small,
-.mini-overview-card strong,
-.mini-overview-card span{display:block}
+.mini-overview-card .overview-copy small,
+.mini-overview-card .overview-copy strong,
+.mini-overview-card .overview-copy span{display:block}
 .mini-overview-card small{
   color:#15386b;
   font-size:12px;
@@ -5733,7 +5733,7 @@ body.student-app-shell .tracklist-page-main{
   font-weight:950;
   letter-spacing:-.035em;
 }
-.mini-overview-card span{
+.mini-overview-card .overview-copy span{
   color:#6c849c;
   font-size:10px;
   line-height:1.3;
@@ -6142,7 +6142,7 @@ body.student-app-shell .student-module-toolbar.tracklist-toolbar h1{
   margin:5px 0 6px;
   font-size:39px;
 }
-.mini-overview-card span{
+.mini-overview-card .overview-copy span{
   font-size:11px;
   line-height:1.35;
 }
@@ -6339,7 +6339,7 @@ body.student-app-shell .student-module-toolbar.tracklist-toolbar h1{
   .overview-icon{width:48px;height:48px;border-radius:15px;font-size:19px}
   .mini-overview-card small{font-size:12px}
   .mini-overview-card strong{font-size:30px}
-  .mini-overview-card span{font-size:10px}
+  .mini-overview-card .overview-copy span{font-size:10px}
   .track-card{border-radius:20px}
   .track-card-head{padding:15px 14px 11px}
   .track-card-heading{gap:10px}
@@ -6355,4 +6355,38 @@ body.student-app-shell .student-module-toolbar.tracklist-toolbar h1{
   .track-election-empty{min-height:0;grid-template-columns:1fr;text-align:center;padding:20px}
   .track-election-empty .track-empty-illustration{justify-self:center}
   .track-election-empty .track-primary-btn{grid-column:auto;width:100%;min-width:0}
+}
+
+
+/* TRACKLIST METRIC ICON ALIGNMENT FIX - 2026-09-10
+   Prevent text-span rules from collapsing the metric icon tiles. */
+.track-overview-cards .mini-overview-card > .overview-icon{
+  width:62px;
+  height:62px;
+  display:grid!important;
+  place-items:center;
+  flex:0 0 62px;
+  border-radius:19px;
+  font-size:24px!important;
+  line-height:1!important;
+  position:relative;
+  z-index:2;
+}
+.track-overview-cards .mini-overview-card > .overview-icon i{
+  display:block;
+  font-size:inherit;
+  line-height:1;
+}
+.track-overview-cards .mini-overview-card .overview-copy span{
+  display:block;
+  color:#6c849c;
+}
+@media(max-width:680px){
+  .track-overview-cards .mini-overview-card > .overview-icon{
+    width:48px;
+    height:48px;
+    flex-basis:48px;
+    border-radius:15px;
+    font-size:20px!important;
+  }
 }
