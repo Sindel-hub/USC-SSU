@@ -81,7 +81,13 @@ function renderComplaintPreview() {
   const item = latestComplaint();
   if (!host) return;
   if (!item) {
-    host.innerHTML = `<div class="track-empty-card"><p>No complaints yet.</p><button class="modal-btn primary" onclick="window.location.href='../complaint/complaint.html'">Submit a Complaint</button></div>`;
+    host.innerHTML = `
+      <div class="track-empty-state complaint-empty-state">
+        <div class="track-empty-illustration document"><i class="fa-regular fa-file-lines"></i></div>
+        <h3>No complaints yet.</h3>
+        <p>Have a concern? We're here to listen.</p>
+        <button class="track-primary-btn" onclick="window.location.href='../complaint/complaint.html'"><i class="fa-solid fa-paper-plane"></i> Submit a Complaint</button>
+      </div>`;
     return;
   }
   const status = clean(item.status, 'Submitted');
@@ -112,10 +118,15 @@ function renderRecentActivity() {
     items.push({title: 'Vote Recorded', text: 'Your submission for the USC General Election was successfully saved.', when: formatDateTime(item.votedAt)});
   });
   if (!items.length) {
-    host.innerHTML = '<div class="track-empty-card"><p>No recent activity yet.</p></div>';
+    host.innerHTML = `
+      <div class="track-empty-state activity-empty-state">
+        <div class="track-empty-illustration calendar"><i class="fa-regular fa-calendar-days"></i></div>
+        <h3>No recent activity yet.</h3>
+        <p>Your activity will appear here once you submit a complaint or vote.</p>
+      </div>`;
     return;
   }
-  host.innerHTML = items.map(item => `<article class="activity-item"><span class="activity-bullet"></span><div><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.text)}</p><small>${escapeHtml(item.when)}</small></div></article>`).join('');
+  host.innerHTML = items.map(item => `<article class="activity-item"><span class="activity-icon"><i class="fa-solid ${item.title === 'Vote Recorded' ? 'fa-check-to-slot' : 'fa-message'}"></i></span><div><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.text)}</p><small>${escapeHtml(item.when)}</small></div></article>`).join('');
 }
 
 function buildVoteRows(vote) {
@@ -129,7 +140,12 @@ function renderVotePreview() {
   const vote = latestParticipation();
   if (!host) return;
   if (!vote) {
-    host.innerHTML = `<div class="track-empty-card"><h3>No election submission yet</h3><p>Your submitted vote will appear here after voting.</p><button class="modal-btn primary" onclick="window.location.href='election.html'">Go to Election</button></div>`;
+    host.innerHTML = `
+      <div class="track-election-empty">
+        <div class="track-empty-illustration ballot"><i class="fa-solid fa-check-to-slot"></i></div>
+        <div class="track-election-empty-copy"><h3>No election submission yet.</h3><p>Your submitted vote will appear here after voting.</p></div>
+        <button class="track-primary-btn" onclick="window.location.href='election.html'"><i class="fa-solid fa-arrow-up-right-from-square"></i> Go to Election</button>
+      </div>`;
     return;
   }
   const electionName = clean(vote.electionName, 'USC Election');
